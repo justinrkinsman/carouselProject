@@ -4,6 +4,9 @@ let getInfo = (function(){
     return {displayArr, hiddenArr}
 })()
 
+console.log(getInfo.displayArr)
+    console.log(getInfo.hiddenArr)
+
 let populateDisplay = (function makeDisplay(){
     let displayImage0 = document.getElementById('displayImage0')
     let displayImage1 = document.getElementById('displayImage1')
@@ -27,7 +30,13 @@ let populateDisplay = (function makeDisplay(){
 })()
 
 let leftArrowFunction = (function(){
-    console.log('Left')
+    let hiddenArr1 = getInfo.hiddenArr[1]
+    let displayArr2 = getInfo.displayArr[2]
+    getInfo.hiddenArr.unshift(displayArr2)
+    getInfo.displayArr.pop()
+    getInfo.displayArr.unshift(hiddenArr1)
+    getInfo.hiddenArr.pop()
+    populateDisplay.publicMethod()
 })
 
 let rightArrowFunction = (function(){
