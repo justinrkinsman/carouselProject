@@ -4,27 +4,30 @@ let getInfo = (function(){
     return {displayArr, hiddenArr}
 })()
 
-console.log(getInfo.displayArr)
-    console.log(getInfo.hiddenArr)
-
 let populateDisplay = (function makeDisplay(){
     let displayImage0 = document.getElementById('displayImage0')
     let displayImage1 = document.getElementById('displayImage1')
     let displayImage2 = document.getElementById('displayImage2')
     let displayImage3 = document.getElementById('displayImage3')
     let displayImage4 = document.getElementById('displayImage4')
+    let pageDisplay = document.getElementById('pageContents')
     displayImage0.textContent = getInfo.displayArr[0]
     displayImage1.textContent = getInfo.displayArr[1]
     displayImage2.textContent = getInfo.displayArr[2]
     displayImage3.textContent = getInfo.displayArr[3]
     displayImage4.textContent = getInfo.displayArr[4]
+    pageDisplay.textContent = displayImage1.textContent
     return {
-        publicMethod: function() {
+        populateCarousel: function() {
             displayImage0.textContent = getInfo.displayArr[0]
             displayImage1.textContent = getInfo.displayArr[1]
             displayImage2.textContent = getInfo.displayArr[2]
             displayImage3.textContent = getInfo.displayArr[3]
             displayImage4.textContent = getInfo.displayArr[4]
+        },
+        populatePage: function(){
+            let displayImage1 = document.getElementById('displayImage1')
+            pageDisplay.textContent = displayImage1.textContent  
         }
     } 
 })()
@@ -36,7 +39,8 @@ let leftArrowFunction = (function(){
     getInfo.displayArr.pop()
     getInfo.displayArr.unshift(hiddenArr1)
     getInfo.hiddenArr.pop()
-    populateDisplay.publicMethod()
+    populateDisplay.populateCarousel()
+    populateDisplay.populatePage()
 })
 
 let rightArrowFunction = (function(){
@@ -44,9 +48,8 @@ let rightArrowFunction = (function(){
     getInfo.displayArr.shift()
     getInfo.displayArr.push(getInfo.hiddenArr[0])
     getInfo.hiddenArr.shift()
-    populateDisplay.publicMethod()
-    console.log(getInfo.displayArr)
-    console.log(getInfo.hiddenArr)
+    populateDisplay.populateCarousel()
+    populateDisplay.populatePage()
 })
 
 /*let myFunction = (function(e) {
