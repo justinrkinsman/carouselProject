@@ -3,8 +3,16 @@ let leftArrowFunction = function(){
 }
 
 let rightArrowFunction = function(){
-    console.log('Right')
+    hiddenArr.push(displayArr[0])
+    displayArr.shift()
+    displayArr.push(hiddenArr[0])
+    hiddenArr.shift()
+    console.log(displayArr)
+    console.log(hiddenArr)
 }
+
+let displayArr = ([0, 1, 2])
+let hiddenArr = ([3, 4])
 
 /*let myFunction = (function(e) {
     let index = e.target.classList[0].slice(-1)
