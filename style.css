@@ -30,6 +30,10 @@ html, body {
     height: 90%;
 }
 
+#displayImage3, #displayImage4{
+    display: none;
+}
+
 /*.dropbtn0, .dropbtn1 {
     background-color: #3498DB;
     color: white;
