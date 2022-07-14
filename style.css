@@ -53,10 +53,14 @@ html, body {
     background-color: white
 }
 
-[id^="dot"] {
+[id^="dot"], .dot {
     background-color: rgb(182, 201, 243);
     height: 20px;
     width: 20px;
     border-radius: 50%;
     display: inline-block;
+}
+
+.highlight {
+    background-color: black;
 }

@@ -17,6 +17,7 @@ let populateDisplay = (function makeDisplay(){
     displayImage3.textContent = getInfo.displayArr[3]
     displayImage4.textContent = getInfo.displayArr[4]
     pageDisplay.textContent = displayImage1.textContent
+    document.getElementById(`dot1`).classList.toggle('highlight')
     return {
         populateCarousel: function() {
             displayImage0.textContent = getInfo.displayArr[0]
@@ -28,7 +29,7 @@ let populateDisplay = (function makeDisplay(){
         populatePage: function(index){
             let displayImage1 = document.getElementById('displayImage1')
             index = index || displayImage1.textContent
-            pageDisplay.textContent = index  
+            pageDisplay.textContent = index
         }
     } 
 })()
@@ -56,6 +57,10 @@ let rightArrowFunction = (function(){
 let navButtonFunction = (function(e){
     let currentIndex = document.getElementById('displayImage1').textContent.slice(-1)
     let newIndex = e.target.id.slice(-1)
+    document.getElementById(`dot${newIndex}`).classList.add('highlight')
+    if (currentIndex !== newIndex){
+        document.getElementById(`dot${currentIndex}`).classList.remove('highlight')
+    }
     if (newIndex > currentIndex){
         let clickAmount = newIndex - currentIndex
         let i;
