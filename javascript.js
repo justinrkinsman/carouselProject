@@ -1,18 +1,44 @@
-let leftArrowFunction = function(){
+let getInfo = (function(){
+    let displayArr = ([0, 1, 2])
+    let hiddenArr = ([3, 4])
+    return {displayArr, hiddenArr}
+})()
+
+let populateDisplay = (function makeDisplay(){
+    let displayImage0 = document.getElementById('displayImage0')
+    let displayImage1 = document.getElementById('displayImage1')
+    let displayImage2 = document.getElementById('displayImage2')
+    let displayImage3 = document.getElementById('displayImage3')
+    let displayImage4 = document.getElementById('displayImage4')
+    displayImage0.textContent = getInfo.displayArr[0]
+    displayImage1.textContent = getInfo.displayArr[1]
+    displayImage2.textContent = getInfo.displayArr[2]
+    displayImage3.textContent = getInfo.displayArr[3]
+    displayImage4.textContent = getInfo.displayArr[4]
+    return {
+        publicMethod: function() {
+            displayImage0.textContent = getInfo.displayArr[0]
+            displayImage1.textContent = getInfo.displayArr[1]
+            displayImage2.textContent = getInfo.displayArr[2]
+            displayImage3.textContent = getInfo.displayArr[3]
+            displayImage4.textContent = getInfo.displayArr[4]
+        }
+    } 
+})()
+
+let leftArrowFunction = (function(){
     console.log('Left')
-}
+})
 
-let rightArrowFunction = function(){
-    hiddenArr.push(displayArr[0])
-    displayArr.shift()
-    displayArr.push(hiddenArr[0])
-    hiddenArr.shift()
-    console.log(displayArr)
-    console.log(hiddenArr)
-}
-
-let displayArr = ([0, 1, 2])
-let hiddenArr = ([3, 4])
+let rightArrowFunction = (function(){
+    getInfo.hiddenArr.push(getInfo.displayArr[0])
+    getInfo.displayArr.shift()
+    getInfo.displayArr.push(getInfo.hiddenArr[0])
+    getInfo.hiddenArr.shift()
+    populateDisplay.publicMethod()
+    console.log(getInfo.displayArr)
+    console.log(getInfo.hiddenArr)
+})
 
 /*let myFunction = (function(e) {
     let index = e.target.classList[0].slice(-1)
