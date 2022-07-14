@@ -25,9 +25,10 @@ let populateDisplay = (function makeDisplay(){
             displayImage3.textContent = getInfo.displayArr[3]
             displayImage4.textContent = getInfo.displayArr[4]
         },
-        populatePage: function(){
+        populatePage: function(index){
             let displayImage1 = document.getElementById('displayImage1')
-            pageDisplay.textContent = displayImage1.textContent  
+            index = index || displayImage1.textContent
+            pageDisplay.textContent = index  
         }
     } 
 })()
@@ -52,22 +53,22 @@ let rightArrowFunction = (function(){
     populateDisplay.populatePage()
 })
 
-/*let myFunction = (function(e) {
-    let index = e.target.classList[0].slice(-1)
-    let div = document.getElementById(`myDropdown${index}`)
-    div.classList.toggle('show')
-    return index
-})
-
-window.onclick = function(event) {
-    if (!event.target.matches(`button`)) {
-        let dropdowns = document.getElementsByClassName('dropdown-contentX');
+let navButtonFunction = (function(e){
+    let currentIndex = document.getElementById('displayImage1').textContent.slice(-1)
+    let newIndex = e.target.id.slice(-1)
+    if (newIndex > currentIndex){
+        let clickAmount = newIndex - currentIndex
         let i;
-        for (i = 0; i < dropdowns.length; i++) {
-            let openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-            }
+        for (i = 0; i < clickAmount; i++){
+            rightArrowFunction()
+        }
+    }else if (currentIndex > newIndex){
+        let clickAmount = currentIndex - newIndex
+        let i;
+        for (i = 0; i < clickAmount; i++){
+            leftArrowFunction()
         }
     }
-}*/
+    populateDisplay.populatePage(newIndex)
+    //populateDisplay.populateCarousel()
+})
