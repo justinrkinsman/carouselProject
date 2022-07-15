@@ -47,6 +47,8 @@ let leftArrowFunction = (function(){
     document.getElementById(`dot${newIndex}`).classList.add('highlight')
     populateDisplay.populateCarousel()
     populateDisplay.populatePage()
+    clearInterval(navTimer)
+    navTimer = setInterval(rightArrowFunction, 5000)
 })
 
 let rightArrowFunction = (function(){
@@ -60,6 +62,8 @@ let rightArrowFunction = (function(){
     document.getElementById(`dot${newIndex}`).classList.add('highlight')
     populateDisplay.populateCarousel()
     populateDisplay.populatePage()
+    clearInterval(navTimer)
+    navTimer = setInterval(rightArrowFunction, 5000)
 })
 
 let navButtonFunction = (function(e){
@@ -83,5 +87,8 @@ let navButtonFunction = (function(e){
         }
     }
     populateDisplay.populatePage(newIndex)
-    //populateDisplay.populateCarousel()
+    clearInterval(navTimer)
+    navTimer = setInterval(rightArrowFunction, 5000)
 })
+
+let navTimer = setInterval(rightArrowFunction, 5000)
