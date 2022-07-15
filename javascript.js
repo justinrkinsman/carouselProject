@@ -41,6 +41,10 @@ let leftArrowFunction = (function(){
     getInfo.displayArr.pop()
     getInfo.displayArr.unshift(hiddenArr1)
     getInfo.hiddenArr.pop()
+    let currentIndex = document.getElementById('displayImage1').textContent.slice(-1)
+    document.getElementById(`dot${currentIndex}`).classList.remove('highlight')
+    let newIndex = getInfo.displayArr[1]
+    document.getElementById(`dot${newIndex}`).classList.add('highlight')
     populateDisplay.populateCarousel()
     populateDisplay.populatePage()
 })
@@ -50,6 +54,10 @@ let rightArrowFunction = (function(){
     getInfo.displayArr.shift()
     getInfo.displayArr.push(getInfo.hiddenArr[0])
     getInfo.hiddenArr.shift()
+    let currentIndex = document.getElementById('displayImage1').textContent.slice(-1)
+    document.getElementById(`dot${currentIndex}`).classList.remove('highlight')
+    let newIndex = getInfo.displayArr[1]
+    document.getElementById(`dot${newIndex}`).classList.add('highlight')
     populateDisplay.populateCarousel()
     populateDisplay.populatePage()
 })
