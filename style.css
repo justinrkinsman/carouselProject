@@ -64,3 +64,8 @@ html, body {
 .highlight {
     background-color: black;
 }
+
+img {
+    height: 60px;
+    width: auto;
+}
